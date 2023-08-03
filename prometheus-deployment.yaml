@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
       - name: prometheus
-        image: prom/prometheus
+        image: prom/prometheus:v2.19.2
         args:
           - '--storage.tsdb.retention=6h'
           - '--storage.tsdb.path=/prometheus'
@@ -34,6 +34,7 @@ spec:
         ports:
         - name: web
           containerPort: 9090
+          protocol: TCP
         volumeMounts:
         - name: prometheus-config-volume
           mountPath: /etc/prometheus
